@@ -4,6 +4,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from pages.locators import MainPageLocators
 
 
 class BasePage(object):
@@ -21,3 +22,7 @@ class BasePage(object):
         except NoSuchElementException:
             return False, "element is not present"
         return True
+
+    def go_to_feedback_page(self):
+        link = self.browser.find_element(*MainPageLocators.ASK_MANAGER)
+        link.click()
