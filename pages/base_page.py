@@ -11,7 +11,7 @@ from pages.private_value import email
 
 
 class BasePage(object):
-    def __init__(self, browser, url, timeout=10):
+    def __init__(self, browser, url, timeout=15):
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
@@ -40,4 +40,8 @@ class BasePage(object):
         input2 = self.browser.find_element(*LoginPageLocators.PASSWORD_USER_SELECTOR)
         input2.send_keys(password)
         self.browser.find_element(*LoginPageLocators.BUTTON_LOGIN_SELECTOR).click()
+
+    def go_to_course_catalog_page(self):
+        link = self.browser.find_element(*MainPageLocators.CATALOG_COURSE)
+        link.click()
 
