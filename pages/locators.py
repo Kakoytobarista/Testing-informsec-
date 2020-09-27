@@ -4,10 +4,14 @@ from selenium.webdriver.common.by import By
 class MainPageLocators(object):
     ASK_MANAGER = (By.CSS_SELECTOR, "body > div.but-user > ul")
     LOGIN_LINK = (By.CSS_SELECTOR, "body > div.main > div.header > div.b-input > ul > li.input > span > a")
+    CATALOG_COURSE = (By.CSS_SELECTOR, "body > div.main > div.panel-top > div > \
+    div.menu-top > ul > li:nth-child(1) > a")
+
 
 
 class OtherPageLocators(object):
     PAGE_WITH_FEEDBACK_FROM_MANAGER = (By.CSS_SELECTOR, "body > div.main > div.content > h1")
+    PAGE_WITH_CATALOG_COURSE = (By.CSS_SELECTOR, "body > div.main > div.content > h1")
 
 
 class LoginPageLocators(object):
