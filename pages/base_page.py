@@ -6,13 +6,19 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pages.locators import MainPageLocators
 from pages.locators import LoginPageLocators
+from pages.locators import ProductPageLocators
 from pages.private_value import password
 from pages.private_value import email
 from selenium.webdriver.common.keys import Keys
 import time
 from selenium import webdriver
+import urllib.request
+from selenium.webdriver import ActionChains
+import pyautogui
+
 
 email1 = "gurbanov@rambler.ru"
+calendar1 = "30.09.2020"
 
 
 class BasePage(object):
@@ -89,3 +95,38 @@ class BasePage(object):
         print(input4)
         assert input4 == "Спасибо!", "should be another words"
         time.sleep(5)
+
+    def go_to_basket_page(self):
+        link = self.browser.find_element(*ProductPageLocators.BASKET_LINK)
+        link.click()
+
+    def go_to_course_link_and_take_of_course_in_basket(self, driver):
+        link = self.browser.find_element(*ProductPageLocators.COURSE_PAGE)
+        link.click()
+        driver.execute_script("window.scrollTo(0, 250)")
+        link1 = self.browser.find_element(*ProductPageLocators.COURSE_PRODUCT)
+        link1.click()
+        driver.execute_script("window.scrollTo(0, 1450)")
+        print('\n to click')
+        calendar = self.browser.find_element(*ProductPageLocators.CALENDAR_OF_COURSE)
+        calendar.click()
+        calendar.send_keys(calendar1)
+        # print('\nclick to calendar')
+        # time.sleep(3)
+        # actions = ActionChains(driver)
+        # actions.move_by_offset(220, 1920).click()
+        # calendar.click()
+        # time.sleep(3)
+        button = self.browser.find_element(*ProductPageLocators.BUTTON_OF_CALENDAR)
+        button.click()
+        time.sleep(3)
+        button2 = self.browser.find_element(*ProductPageLocators.BUTTON_TAKE_TO_BASKET)
+        button2.click()
+        time.sleep(3)
+
+    def check_coordinate(self, driver):
+        e = driver.find_element_by_xpath("//*[@id='table-wrap']/tbody/tr/td/div/div/div/div/div/a")
+        location = e.location
+        size = e.size
+        print(location)
+        print(size)
