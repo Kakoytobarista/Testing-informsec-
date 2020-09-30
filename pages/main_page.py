@@ -4,9 +4,9 @@ from pages.locators import MainPageLocators
 from selenium import webdriver
 
 
-# class MainPage(BasePage):
+# class MainPageInit(BasePage):
 #     def __init__(self, *args, **kwargs):
-#         super(MainPage, self).__init__(*args, **kwargs)
+#         super(MainPageInit, self).__init__(*args, **kwargs)
 
 
 class MainPage(BasePage):
