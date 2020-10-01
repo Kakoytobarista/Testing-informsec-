@@ -20,19 +20,19 @@ class TestLoginFromMainPage(object):
         self.page.open()
         self.page.go_to_login_page()
         self.page.register_on_login_page()
-    #
-    # def test_user_can_see_success_register(self, browser):
-    #     page = LoginPage(browser, login_link)
-    #     page.should_be_login_page()
-    #
-    # def test_user_can_see_register_information(self, browser):
-    #     page = LoginPage(browser, login_link)
-    #     page.should_be_register_information(browser)
-    #
-    # def test_user_can_go_to_basket_page(self, browser):
-    #     page = BasketPage(browser, main_link)
-    #     page.go_to_basket_page()
-    #     page.should_see_success_go_to_basket_page()
+
+    def test_user_can_see_success_register(self, browser):
+        page = LoginPage(browser, login_link)
+        page.should_be_login_page()
+
+    def test_user_can_see_register_information(self, browser):
+        page = LoginPage(browser, login_link)
+        page.should_be_register_information(browser)
+
+    def test_user_can_go_to_basket_page(self, browser):
+        page = BasketPage(browser, main_link)
+        page.go_to_basket_page()
+        page.should_see_success_go_to_basket_page()
 
     def test_user_can_add_course_in_basket(self, browser):
         page = BasketPage(browser, main_link)
